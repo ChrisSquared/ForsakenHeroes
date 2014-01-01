@@ -1,9 +1,21 @@
 package com.github.forsakenheroes.core.gameobjects.components;
 
-public abstract class Component {
+import com.github.forsakenheroes.core.gameobjects.GameObject;
 
-	public Component() {
-		// TODO Auto-generated constructor stub
+/**
+ * Abstract class that all components will extend from.
+ * 
+ *
+ */
+public abstract class Component {
+	protected GameObject owner;
+	
+	public Component(GameObject owner) {
+		this.owner = owner;
+	}
+	
+	public GameObject getOwner() {
+		return this.owner;
 	}
 
 }
