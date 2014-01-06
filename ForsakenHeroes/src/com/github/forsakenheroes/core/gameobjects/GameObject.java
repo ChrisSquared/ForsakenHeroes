@@ -3,12 +3,13 @@ package com.github.forsakenheroes.core.gameobjects;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.github.evms.eventmangement.EventManager;
 import com.github.forsakenheroes.core.gameobjects.components.Component;
 
 public class GameObject {
 
 	// Global Unique Identifier (GUID)
-	private UUID guid;
+	private String guid;
 	
 	// Storage for the components tied to this GameObject
 	private ConcurrentHashMap<String, Component> componentMap;
@@ -17,8 +18,9 @@ public class GameObject {
 	 * Create a new GameObject with a unique GUID.
 	 */
 	public GameObject() {
-		guid = UUID.randomUUID();
+		guid = UUID.randomUUID().toString();
 		componentMap = new ConcurrentHashMap<String, Component>();
+		EventManager.getInstance().raiseEvent(EventManager.getInstance().getNewEvent("EVENT_GAMEOBJECT_CREATED", this));
 	}
 	
 	/**
@@ -35,7 +37,7 @@ public class GameObject {
 		return componentMap.putIfAbsent(name, component) == null;
 	}
 	
-	public UUID getUUID() {
+	public String getGUID() {
 		return guid;
 	}
 }
