@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.github.evms.eventmangement.EventManager;
+import com.github.forsakenheroes.core.gameobjects.GameObject;
 
 public class ForsakenHeroesGame implements ApplicationListener {
 	private OrthographicCamera camera;
@@ -33,6 +35,8 @@ public class ForsakenHeroesGame implements ApplicationListener {
 		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
 		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
 		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
+		
+		GameObjectManager.getInstance();
 	}
 
 	@Override
